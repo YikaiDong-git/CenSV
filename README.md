@@ -1,45 +1,51 @@
 # CenSV
 
-An encrypted, single-page browser. It needs a password.
+Interactive browser for centromeric structural variation.
+
+<img src="docs/screenshot.jpg" alt="The CenSV browser is encrypted and opens with a password" width="490">
+
+**CenSV** presents structural variants called inside human centromeric α-satellite
+higher-order repeat arrays, positioned on the **T2T-CHM13 v2.0** assembly, together with the
+molecular and disease associations reported for each. It is the companion browser to a
+manuscript in preparation from the [Weinstock Lab](https://github.com/weinstocklab) at Emory
+University.
+
+## Browser
 
 **https://yikaidong-git.github.io/CenSV/**
 
-The path is case-sensitive. `/censv/` is a 404, not a redirect.
+The whole browser is one self-contained page — the catalog, the annotations, the stylesheet
+and the application are encrypted into a single file and decrypted in your own browser. It
+makes no network request after loading and stores nothing.
 
-## What is in this repository
+> **Access is restricted until publication.** The manuscript is unpublished, so the page opens
+> with a password; please contact the authors for it. This repository is public *because* its
+> contents are ciphertext — there is nothing readable here without that password, including
+> the page's own text. When the manuscript appears, the browser will be republished open and
+> the password retired.
 
-One file that matters, `index.html`. The page markup, the stylesheet, the application and all
-of its data are gzipped into a single container and encrypted with AES-256-GCM under a
-PBKDF2-HMAC-SHA256 key at 600,000 iterations. Entering the password costs about a fifth of a
-second, once per browser tab, and then the page is an ordinary interactive site with no
-network calls of any kind.
+Needs a current browser — Chrome 80, Firefox 113 or Safari 16.4 and newer — and an `https://`
+address, because browsers expose the decryption API only in a secure context. A copy saved and
+opened from a local folder will say so rather than fail silently.
 
-Publishing the ciphertext is the design rather than an oversight. Nothing here is readable
-without the password — not the data, and not the page's own text, which is inside the
-encrypted container along with everything else. That is what lets the file be hosted in
-public at all.
+## Contents
 
-The password is not in this repository, in its history, or in any repository connected to it.
+| | |
+|---|---|
+| `index.html` | the browser, encrypted with AES-256-GCM under a PBKDF2-HMAC-SHA256 key at 600,000 iterations |
+| `docs/screenshot.jpg` | what a visitor without the password sees |
+| `.nojekyll` | serves the file unprocessed through GitHub Pages |
 
-## If you have arrived here without one
+Opening the page costs about a fifth of a second, once per browser tab.
 
-This is not a puzzle and there is nothing to break. It is a companion browser to a manuscript
-in preparation, shared ahead of publication with a small number of readers. When the
-manuscript is published this will be republished open and unencrypted, and the password will
-stop mattering.
+The source, the data pipeline, the verification suite and the deployment live in a separate
+private repository until publication, at which point they will be published alongside this.
 
-## Requirements
+## Cite
 
-A current browser — Chrome 80, Firefox 113 or Safari 16.4 and newer, all released in 2023 or
-earlier — and an `https://` address. Browsers offer decryption only in a secure context, so a
-copy saved and opened from a local folder cannot work; it will say so plainly rather than
-render an empty page.
+A citation will be added when the manuscript is published. Until then, please contact the
+authors before referring to this resource.
 
-## What is not here
+## License
 
-The source, the data pipeline and the checks that build this file live in a private
-repository. This one holds the published artefact and is regenerated wholesale on each
-update, so its history is not worth reading and issues or pull requests against it will not
-reach anyone. For anything else, contact the repository owner.
-
-All rights reserved. Please do not redistribute the file or its contents.
+[MIT](LICENSE).
